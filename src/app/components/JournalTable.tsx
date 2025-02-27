@@ -1,5 +1,5 @@
 import React from "react";
-import { JournalEntry } from "./JournalEntriesTable";
+import { JournalEntry } from "./JournalEntry";
 
 
 interface JournalTableProps {

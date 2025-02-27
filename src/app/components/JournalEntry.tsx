@@ -39,12 +39,12 @@ export interface JournalEntry {
   };
 }
 
-interface JournalEntriesTableProps {
+interface JournalEntryProps {
   monthAndYear: string;
   onBack: (month: string | null) => void;
 }
 
-const JournalEntriesTable: React.FC<JournalEntriesTableProps> = ({ monthAndYear, onBack }) => {
+const JournalEntry: React.FC<JournalEntryProps> = ({ monthAndYear, onBack }) => {
 
   const [journalEntry, setJournalEntry] = useState<JournalEntry>();
   const [loading, setLoading] = useState(true);
@@ -93,4 +93,4 @@ const JournalEntriesTable: React.FC<JournalEntriesTableProps> = ({ monthAndYear,
   );
 };
 
-export default JournalEntriesTable;
+export default JournalEntry;

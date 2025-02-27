@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import MonthsList from "./components/MonthsList";
-import JournalEntriesTable from "./components/JournalEntriesTable";
+import JournalEntry from "./components/JournalEntry";
 import LoginForm from './components/LoginForm';
 import Spinner from './components/Spinner';
 
@@ -14,6 +14,13 @@ export default function Home() {
   const handleMonthClick = (month: string | null) => {
     setSelectedMonth(month);
   };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('client');
+    localStorage.removeItem('uid');
+    setLoggedIn(false);
+  }
 
   useEffect(() => {
     setLoggedIn(localStorage && localStorage.getItem('access-token') !== null);
@@ -31,9 +38,17 @@ export default function Home() {
       {loading ? <Spinner /> : (
         loggedIn ? (
           <main className='flex flex-col items-center justify-center bg-blue-100'>
-            <h1 className='p-4 text-black text-center text-4xl font-semibold'>Sales Journal Entries</h1>
+            <div className="fixed top-0 left-0 right-0 bg-white shadow-md p-2 flex justify-end">
+              <button
+                className='bg-red-400 text-white px-4 p-2 rounded'
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </button>
+            </div>
+            <h1 className='p-4 mt-8 text-black text-center text-4xl font-semibold'>Sales Journal Entries</h1>
             {!selectedMonth && <MonthsList onMonthClick={handleMonthClick} />}
-            {selectedMonth && <JournalEntriesTable onBack={handleMonthClick} monthAndYear={selectedMonth} />}
+            {selectedMonth && <JournalEntry onBack={handleMonthClick} monthAndYear={selectedMonth} />}
           </main>
         ) : <LoginForm setLoggedIn={ setLoggedIn }/>
       )}
