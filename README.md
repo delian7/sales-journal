@@ -21,7 +21,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
     ```
 
 ## Features
-**Authentication**: The frontend uses localStorage to store the client_id, access_token, and uid needed for authentication. In a production system, Next.js would be leveraged to not expose these to the client for better security.
-**Month Selection**: A view for choosing a month instead of displaying all months.
-**API Integration**: The frontend communicates with the backend API endpoint /api/v1/journal_entries to fetch journal entries.
-**Loading Spinner**: A Tailwind CSS spinner is displayed while data is being loaded.
+- **Authentication**: The frontend uses localStorage to store the client_id, access_token, and uid needed for authentication. In a production system, Next.js would be leveraged to not expose these to the client for better security.
+- **Month Selection**: A view for choosing a month instead of displaying all months.
+- **API Integration**: The frontend communicates with the backend API endpoint /api/v1/journal_entries to fetch journal entries.
+- **Loading Spinner**: A Tailwind CSS spinner is displayed while data is being loaded.
