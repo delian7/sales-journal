@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { format, parse } from 'date-fns';
 
 interface MonthsListProps {
   onMonthClick: (month: string) => void;
@@ -43,15 +44,19 @@ const MonthsList: React.FC<MonthsListProps> = ({ onMonthClick }) => {
   return (
     <div className="p-4 text-black">
       <ul className="space-y-2">
-        {months.map((month, index) => (
-          <li
-            key={index}
-            className="cursor-pointer text-blue-500 hover:text-blue-700 underline"
-            onClick={() => onMonthClick(month)}
-          >
-            {month}
-          </li>
-        ))}
+      {months.map((month, index) => {
+          const formattedMonth = format(parse(month, 'yyyy-MM', new Date()), 'MMMM yyyy');
+          return (
+            <li key={index}>
+              <button
+                className="w-full text-left px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-700"
+                onClick={() => onMonthClick(month)}
+              >
+                {formattedMonth}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
