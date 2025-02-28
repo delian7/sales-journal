@@ -55,7 +55,7 @@ const JournalEntry: React.FC<JournalEntryProps> = ({ monthAndYear, onBack }) => 
   useEffect(() => {
     const fetchJournalEntries = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/v1/journal_entries/${year}/${month}`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/v1/journal_entries/${year}/${month}`, {
           headers: {
             'Content-Type': 'application/json',
             'access-token': localStorage.getItem('access-token'),

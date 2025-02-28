@@ -14,7 +14,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ setLoggedIn }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/auth/sign_in', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/auth/sign_in`, {
         email,
         password,
       });

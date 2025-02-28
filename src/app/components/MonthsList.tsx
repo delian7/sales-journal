@@ -15,7 +15,7 @@ const MonthsList: React.FC<MonthsListProps> = ({ onMonthClick }) => {
   useEffect(() => {
     const fetchMonths = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/journal_entries', {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/v1/journal_entries`, {
           headers: {
             'Content-Type': 'application/json',
             'access-token': localStorage.getItem('access-token'),
